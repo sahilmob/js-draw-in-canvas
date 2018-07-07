@@ -28,11 +28,17 @@ function saveFile() {
 function penDown(e) {
     pen.down = true;
     [pen.x, pen.y] = [e.offsetX, e.offsetY];
-    console.log(pen);
 }
 
-function draw() {
-
+function draw(e) {
+    if (!pen.down) return;
+    ctx.lineWidth = penWidth.value;
+    ctx.strokeStyle = penColor.value;
+    ctx.beginPath();
+    ctx.moveTo(pen.x, pen.y);
+    ctx.lineTo(e.offsetX, e.offsetY)
+    ctx.stroke();
+    [pen.x, pen.y] = [e.offsetX, e.offsetY];
 }
 
 function penUp() {
