@@ -14,3 +14,25 @@ let pen = {
     y: 0,
     down: false
 }
+
+saver.addEventListener('click', saveFile)
+canvas.addEventListener('mousedown', penDown)
+canvas.addEventListener('mousemove', draw)
+canvas.addEventListener('mouseup', penUp)
+canvas.addEventListener('mouseout', penUp)
+
+function saveFile() {
+
+}
+
+function penDown() {
+
+}
+
+function draw() {
+
+}
+
+function penUp() {
+
+}
