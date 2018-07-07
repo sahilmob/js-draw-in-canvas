@@ -3,11 +3,13 @@ const ctx = canvas.getContext('2d');
 const penColor = document.querySelector('input[name="penColor"]');
 const penWidth = document.querySelector('input[name="penWidth"]');
 const saver = document.querySelector('#saver');
+const rangeText = document.querySelector('#range_text')
 
 ctx.strokeStyle = '#000000';
 ctx.lineJoin = 'round'
 ctx.lineCap = 'round';
 ctx.lineWidth = '5';
+rangeText.value = penWidth.value
 
 let pen = {
     x: 0,
@@ -20,9 +22,10 @@ canvas.addEventListener('mousedown', penDown);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', penUp);
 canvas.addEventListener('mouseout', penUp);
+penWidth.addEventListener('change', penWidthChanged)
+rangeText.addEventListener('change', rangeTextChanged)
 
 function saveFile() {
-    let image = canvas.toDataURL();
     let a = document.createElement('a');
     a.setAttribute('download', 'image.png');
     a.setAttribute('href', canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'));
@@ -50,4 +53,12 @@ function draw(e) {
 
 function penUp() {
     pen.down = false;
+}
+
+function penWidthChanged(e) {
+    rangeText.value = e.target.value
+}
+
+function rangeTextChanged(e) {
+    penWidth.value = e.target.value
 }
