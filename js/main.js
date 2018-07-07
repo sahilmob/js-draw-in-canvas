@@ -22,7 +22,8 @@ canvas.addEventListener('mouseup', penUp);
 canvas.addEventListener('mouseout', penUp);
 
 function saveFile() {
-
+    let image = canvas.toDataURL();
+    document.getElementById('myImage').src = image;
 }
 
 function penDown(e) {
