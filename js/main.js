@@ -23,7 +23,13 @@ canvas.addEventListener('mouseout', penUp);
 
 function saveFile() {
     let image = canvas.toDataURL();
-    document.getElementById('myImage').src = image;
+    let a = document.createElement('a');
+    a.setAttribute('download', 'image.png');
+    a.setAttribute('href', canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream'));
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click()
+    document.body.removeChild(a)
 }
 
 function penDown(e) {
